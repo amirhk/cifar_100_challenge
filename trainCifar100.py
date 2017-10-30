@@ -24,8 +24,8 @@ epochs = 100
 data_augmentation = False
 num_predictions = 20
 save_dir = os.path.join(os.getcwd(), 'saved_models')
-timestamp_string = str(datetime.now().strftime('%Y-%m-%d_____%H-%M-%S'))
-model_name = 'trained_cifar' + str(num_classes) + '_trained_model_' + timestamp_string + '.h5'
+timestamp_string = str(datetime.now().strftime('%Y-%m-%d_%H-%M-%S'))
+model_name = 'cifar' + str(num_classes) + '_trained_model_' + timestamp_string + '.h5'
 
 
 # The data, shuffled and split between train and test sets:
@@ -41,16 +41,22 @@ y_train = keras.utils.to_categorical(y_train, num_classes)
 y_test = keras.utils.to_categorical(y_test, num_classes)
 
 model = Sequential()
-model.add(Conv2D(32, (3, 3), padding='same',
-                 input_shape=x_train.shape[1:]))
+
+# block 1
+model.add(Conv2D(32, (3, 3), padding='same', input_shape=x_train.shape[1:]))
 model.add(Activation('relu'))
+
+# block 2
 model.add(Conv2D(32, (3, 3)))
 model.add(Activation('relu'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Dropout(0.25))
 
-model.add(Conv2D(64, (3, 3), padding='same'))
-model.add(Activation('relu'))
+# # block 3
+# model.add(Conv2D(64, (3, 3), padding='same'))
+# model.add(Activation('relu'))
+
+# block 4
 model.add(Conv2D(64, (3, 3)))
 model.add(Activation('relu'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
