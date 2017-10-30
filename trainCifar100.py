@@ -15,15 +15,17 @@ from keras.layers import Dense, Dropout, Activation, Flatten
 from keras.layers import Conv2D, MaxPooling2D
 
 import os
+from datetime import datetime
 
 batch_size = 32
 # num_classes = 10
 num_classes = 100
-epochs = 200
-data_augmentation = True
+epochs = 100
+data_augmentation = False
 num_predictions = 20
 save_dir = os.path.join(os.getcwd(), 'saved_models')
-model_name = 'keras_cifar' + str(num_classes) + '_trained_model.h5'
+timestamp_string = str(datetime.now().strftime('%Y-%m-%d_____%H-%M-%S'))
+model_name = 'trained_cifar' + str(num_classes) + '_trained_model_' + timestamp_string + '.h5'
 
 
 # The data, shuffled and split between train and test sets:

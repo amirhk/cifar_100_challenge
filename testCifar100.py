@@ -13,7 +13,9 @@ with open('./test_data', 'rb') as f:
     # test_label = pickle.load(f)
 
 
-one_hot_test_predictions = model.predict(test_data.reshape(10000,32,32,3))
+# one_hot_test_predictions = model.predict(test_data.reshape(10000,32,32,3))
+# one_hot_test_predictions = model.predict(test_data.reshape(10000,3,32,32))
+one_hot_test_predictions = model.predict(test_data.reshape(10000,3,32,32).transpose(0,2,3,1))
 not_hot_test_predictions = np.round(np.argmax(one_hot_test_predictions, axis = 1))
 
 predictions_dir = os.path.join(os.getcwd(), 'saved_predictions')
