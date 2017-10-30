@@ -6,7 +6,7 @@ import numpy as np
 
 model_dir = os.path.join(os.getcwd(), 'saved_models')
 # model_name = 'keras_cifar100_45%_model.h5'
-model_name = 'trained_cifar100_trained_model_2017-10-30_____15-29-00.h5'
+model_name = 'cifar100_trained_model_2017-10-30_15-29-00.h5'
 model_path = os.path.join(model_dir, model_name)
 model = load_model(model_path)
 
